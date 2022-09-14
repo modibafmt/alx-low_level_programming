@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <ctype.h>
-
 /**
  * _islower - check lowercase
  *
