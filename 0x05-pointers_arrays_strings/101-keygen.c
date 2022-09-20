@@ -1,65 +1,83 @@
-#include <math.h>
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <time.h>
 
-/**
- * randPassGen - randomly gen pass
- *
- * @N: lenth
- */
-void randPassGen(int N)
-{
-	int i, randm;
 
-	i = 0;
-	randm = 0;
-
-	srand((unsigned int)(time(NULL)));
-
-	char nums[10] = "0123456789";
-	char lowLet[26] = "abcdefghijklmnopqrstuvwxyz";
-	char upperLet[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char sym[8] = "!@#$^&*?";
-	randm = rand() % 4;
-	char pass[N];
-
-	for (i = 0; i < N; i++)
-	{
-		if (randm == 1)
-		{
-			pass[i] = nums[rand() % 10];
-			randm = rand() % 4;
-			printf("%c", pass[i]);
-		} else if (randm == 2)
-		{
-			pass[i] = sym[rand() % 8];
-			randm = rand() % 4;
-			printf("%c", pass[i]);
-		} else if (randm == 3)
-		{
-			pass[i] = upperLet[rand() % 26];
-			randm = rand() % 4;
-			printf("%c", pass[i]);
-		} else
-		{
-			pass[i] = lowLet[rand() % 26];
-			randm = rand() % 4;
-			printf("%c", pass[i]);
-		}
-	}
-}
 
 /**
- * main - start of program
  *
- * Return: always 0 (success)
- */
+ *  * main - random password generator for 101-crackme
+ *
+ *   *
+ *
+ *    * Return: always 0
+ *
+ *     */
+
 int main(void)
+
 {
-	int N = 10;
 
-	randPassGen(N);
-	return (0);
+		int i, j, k, s;
+
+			char c[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+				char p[58];
+
+
+
+					srand(time(NULL));
+
+						while (s != 2772)
+
+								{
+
+											i = k = s = 0;
+
+													while ((2772 - 122) > s)
+
+																{
+
+																				j = rand() % 62;
+
+																							p[i] = c[j];
+
+																										s += c[j];
+
+																													i++;
+
+																															}
+
+															while (c[k])
+
+																		{
+
+																						if (c[k] == (2772 - s))
+
+																										{
+
+																															p[i] = c[k];
+
+																																			s += c[k];
+
+																																							i++;
+
+																																											break;
+
+																																														}
+
+																									k++;
+
+																											}
+
+																}
+
+							p[i] = '\0';
+
+								printf("%s", p);
+
+									return (0);
+
 }
-
