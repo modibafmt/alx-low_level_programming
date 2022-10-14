@@ -1,41 +1,40 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "3-calc.h"
 
 /**
- * main - Show the result from an operation of two integers
- * @argc: How many arguments I have
- * @argv: My string of strings
- * Return: Nothing.
+ * main - check the code for Holberton School students.
+ * @argc: argument count.
+ * @argv: argument vector.
+ *
+ * Return: Always 0.
  */
-
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	if (argc == 4)
-	{
-		int resa, resb, resfinal;
+	int a, b;
+	int (*operation)(int, int);
 
-		if (*argv[1] >= '0' && *argv[1] <= '9')
-			resa = atoi(argv[1]);
-		else
-		{
-			printf("Error\n");
-			exit(98);
-		}
-		if (*argv[3] >= '0' && *argv[3] <= '9')
-			resb = atoi(argv[3]);
-		else
-		{
-			printf("Error\n");
-			exit(98);
-		}
-		/* Dirigir los resultados y el operados a hacer macth para redirigir*/
-		/*su respectiva funcion.*/
-		resfinal = (*get_op_func(argv[2]))(resa, resb);
-		printf("%d\n", resfinal);
-		return (0);
+	if (argc != 4)
+	{
+		printf("Error\n");
+		exit(98);
 	}
-	printf("Error\n");
-	exit(98);
+
+	if (argv[2][1])
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
+	operation = get_op_func(argv[2]);
+
+	if (operation == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+
+	printf("%d\n", operation(a, b));
 	return (0);
 }
